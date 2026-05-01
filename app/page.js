@@ -50,7 +50,7 @@ export default function Home() {
     );
   };
 
-  // 🟢 HOME PAGE
+  // 🟢 HOME
   if (page === "home") {
     return (
       <div style={styles.container}>
@@ -68,20 +68,17 @@ export default function Home() {
         <h3 style={styles.sectionTitle}>Why Choose SasaCash?</h3>
 
         <div style={styles.feature}>
-          ⚡ Instant Processing
-          <br />
+          ⚡ Instant Processing<br />
           <small>Get your loan within hours</small>
         </div>
 
         <div style={styles.feature}>
-          🔒 Secure & Private
-          <br />
+          🔒 Secure & Private<br />
           <small>Your data is protected</small>
         </div>
 
         <div style={styles.feature}>
-          ✅ Simple Process
-          <br />
+          ✅ Simple Process<br />
           <small>Easy 4-step application</small>
         </div>
       </div>
@@ -179,9 +176,7 @@ export default function Home() {
           </div>
         )}
 
-        <button style={styles.secondaryBtn} onClick={() => setPage("personal")}>
-          Back
-        </button>
+        <button style={styles.secondaryBtn} onClick={() => setPage("personal")}>Back</button>
 
         <button
           style={styles.primaryBtn}
@@ -199,24 +194,37 @@ export default function Home() {
     );
   }
 
-  // 🟢 REVIEW
+  // 🟢 REVIEW (FULL DETAILS)
   if (page === "review") {
     return (
       <div style={styles.container}>
-        <h2>Review</h2>
+        <h2>Review Your Application</h2>
 
         <div style={styles.cardWhite}>
-          <p><strong>Name:</strong> {form.firstName} {form.lastName}</p>
-          <p><strong>Loan:</strong> KES {loan}</p>
-          <p><strong>Total:</strong> KES {total}</p>
+          <h3>Personal Information</h3>
+          <p><strong>First Name:</strong> {form.firstName}</p>
+          <p><strong>Middle Name:</strong> {form.middleName || "-"}</p>
+          <p><strong>Last Name:</strong> {form.lastName}</p>
+          <p><strong>ID Number:</strong> {form.id}</p>
+          <p><strong>Phone:</strong> {form.phone}</p>
+          <p><strong>Date of Birth:</strong> {form.dob}</p>
+          <p><strong>Marital Status:</strong> {form.maritalStatus}</p>
+          <p><strong>Employment Status:</strong> {form.employmentStatus}</p>
         </div>
 
-        <button style={styles.secondaryBtn} onClick={() => setPage("loan")}>
-          Back
-        </button>
+        <div style={styles.cardWhite}>
+          <h3>Loan Details</h3>
+          <p><strong>Loan Amount:</strong> KES {loan}</p>
+          <p><strong>Repayment Period:</strong> {form.months} months</p>
+          <p><strong>Loan Purpose:</strong> {form.purpose}</p>
+          <p><strong>Interest:</strong> KES {interest}</p>
+          <p><strong>Total Repayment:</strong> KES {total}</p>
+          <p><strong>Monthly Payment:</strong> KES {monthly.toFixed(2)}</p>
+        </div>
 
+        <button style={styles.secondaryBtn} onClick={() => setPage("loan")}>Back</button>
         <button style={styles.primaryBtn} onClick={() => setPage("payment")}>
-          Proceed
+          Confirm & Proceed
         </button>
       </div>
     );
@@ -260,10 +268,7 @@ const styles = {
     background: "#f5f7fb",
     minHeight: "100vh",
   },
-  logo: {
-    width: "100px",
-    marginBottom: "20px",
-  },
+  logo: { width: "100px", marginBottom: "20px" },
   card: {
     background: "linear-gradient(135deg,#0f9d58,#34d399)",
     color: "white",
@@ -283,10 +288,7 @@ const styles = {
     margin: "10px 0",
     borderRadius: "12px",
   },
-  sectionTitle: {
-    marginTop: "20px",
-    fontWeight: "bold",
-  },
+  sectionTitle: { marginTop: "20px", fontWeight: "bold" },
   input: {
     width: "100%",
     padding: "12px",

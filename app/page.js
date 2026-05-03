@@ -205,28 +205,49 @@ export default function Home() {
 
   // REVIEW
   if (page === "review") {
-    return (
-      <div style={styles.container}>
-        <h2>Review Your Application</h2>
+  return (
+    <div style={styles.container}>
+      <h2>Review Your Application</h2>
 
-        <div style={styles.progressContainer}>
-          <div style={{ ...styles.progressBar, width: `${getProgress()}%` }} />
-        </div>
-        <p style={styles.progressText}>Step 3 of 4</p>
-
-        <div style={styles.cardWhite}>
-          <p><strong>Name:</strong> {form.firstName} {form.lastName}</p>
-          <p><strong>Loan:</strong> KES {loan}</p>
-          <p><strong>Total:</strong> KES {total}</p>
-        </div>
-
-        <button style={styles.secondaryBtn} onClick={() => setPage("loan")}>Back</button>
-        <button style={styles.primaryBtn} onClick={() => setPage("payment")}>
-          Proceed
-        </button>
+      <div style={styles.progressContainer}>
+        <div style={{ ...styles.progressBar, width: `${getProgress()}%` }} />
       </div>
-    );
-  }
+      <p style={styles.progressText}>Step 3 of 4</p>
+
+      {/* PERSONAL INFO */}
+      <div style={styles.cardWhite}>
+        <h3>Personal Information</h3>
+        <p><strong>First Name:</strong> {form.firstName}</p>
+        <p><strong>Middle Name:</strong> {form.middleName || "-"}</p>
+        <p><strong>Last Name:</strong> {form.lastName}</p>
+        <p><strong>ID Number:</strong> {form.id}</p>
+        <p><strong>Phone:</strong> {form.phone}</p>
+        <p><strong>Date of Birth:</strong> {form.dob}</p>
+        <p><strong>Marital Status:</strong> {form.maritalStatus}</p>
+        <p><strong>Employment Status:</strong> {form.employmentStatus}</p>
+      </div>
+
+      {/* LOAN DETAILS */}
+      <div style={styles.cardWhite}>
+        <h3>Loan Details</h3>
+        <p><strong>Loan Amount:</strong> KES {loan}</p>
+        <p><strong>Repayment Period:</strong> {form.months} months</p>
+        <p><strong>Loan Purpose:</strong> {form.purpose}</p>
+        <p><strong>Interest (15%):</strong> KES {interest}</p>
+        <p><strong>Total Repayment:</strong> KES {total}</p>
+        <p><strong>Monthly Payment:</strong> KES {monthly.toFixed(2)}</p>
+      </div>
+
+      <button style={styles.secondaryBtn} onClick={() => setPage("loan")}>
+        Back
+      </button>
+
+      <button style={styles.primaryBtn} onClick={() => setPage("payment")}>
+        Confirm & Proceed
+      </button>
+    </div>
+  );
+}
 
   // PAYMENT
   if (page === "payment") {

@@ -64,7 +64,7 @@ export default function Home() {
   if (page === "home") {
     return (
       <div style={styles.container}>
-        <img src="/logo.png" style={styles.logo} />
+        <img src="logo.png" style={styles.logo} />
 
         <div style={styles.card}>
           <h2>Get up to KES 50,000</h2>
